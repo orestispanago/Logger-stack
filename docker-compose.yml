@@ -5,7 +5,7 @@ services:
     container_name: mysql_container
     image: mysql:latest
     ports:
-     - "3306:3306"
+     - 3360:3306
     volumes:
      - ./volumes/mysql/data:/var/lib/mysql
      - ./volumes/mysql/init:/docker-entrypoint-initdb.d/:ro
@@ -15,7 +15,7 @@ services:
     container_name: grafana_container
     image: grafana/grafana:6.5.0
     ports:
-      - 3000:3000
+      - 3030:3000
     user: '1000:1000'
     volumes:
       - ./volumes/grafana:/var/lib/grafana

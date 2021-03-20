@@ -2,14 +2,17 @@ version: "3"
 
 services:
   mysql:
+    container_name: mysql_container
     image: mysql:latest
     ports:
      - "3306:3306"
     volumes:
-     - ./volumes/mysql:/var/lib/mysql
+     - ./volumes/mysql/data:/var/lib/mysql
+     - ./volumes/mysql:/docker-entrypoint-initdb.d/:ro
     environment:
      - MYSQL_ROOT_PASSWORD=root
   grafana:
+    container_name: grafana_container
     image: grafana/grafana:6.5.0
     ports:
       - 3000:3000
@@ -17,6 +20,7 @@ services:
     volumes:
       - ./volumes/grafana:/var/lib/grafana
   node-red:
+    container_name: nodered_container
     image: nodered/node-red:latest
     ports:
       - "1880:1880"

@@ -1,0 +1,25 @@
+apiVersion: 1
+
+
+datasources:
+- name: MySQL_custom
+  type: mysql
+  access: proxy
+  url: 172.17.0.1
+  password: ReadOnlyPassword
+  user: ReadOnlyUser
+  database: collector
+  basicAuth: false
+  basicAuthUser:
+  basicAuthPassword:
+  withCredentials:
+  isDefault: true
+  jsonData:
+     tlsAuth: false
+     tlsAuthWithCACert: false
+  secureJsonData:
+    tlsCACert: ""
+    tlsClientCert: ""
+    tlsClientKey: ""
+  version: 1
+  editable: true

@@ -2,7 +2,7 @@
 
 Docker stack with persistent data volumes for IoT data logging projects.
 
-Some volumes contain an ```init``` folder with first run configurations,
+The ```init``` folders contain first run configurations where necessary,
 MySQL users, schema, Grafana datasource etc.
 
 
@@ -11,14 +11,14 @@ MySQL users, schema, Grafana datasource etc.
 The ```docker-compose.yml``` file may be used as a template for other projects.
 In this case make sure to:
 
-* Clean up the init volumes definitions in ```docker-compose.yml```.
+* Clean up the ```init``` volumes definitions in ```docker-compose.yml```.
 * Create volumes before first ```docker-compose up``` to avoid permission issues
 
 Once the containers are successfully built and running:
 
 * Create schema and table in MySQL workbench
 
-* Set MySQL datasource IP ```172.17.0.1``` in Grafana.
+* Set MySQL datasource IP in Grafana.
 
 * Secure NodeRED
 

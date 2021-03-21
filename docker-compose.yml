@@ -11,6 +11,9 @@ services:
      - ./volumes/mysql/init:/docker-entrypoint-initdb.d/:ro
     environment:
      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      solar_network:
+        ipv4_address: 172.20.0.2
   grafana:
     container_name: grafana_container
     image: grafana/grafana:6.5.0
@@ -20,6 +23,9 @@ services:
     volumes:
       - ./volumes/grafana:/var/lib/grafana
       - ./volumes/grafana/init:/etc/grafana/provisioning
+    networks:
+      solar_network:
+        ipv4_address: 172.20.0.3
   node-red:
     container_name: nodered_container
     image: nodered/node-red:latest
@@ -27,6 +33,9 @@ services:
       - "1880:1880"
     volumes:
       - ./volumes/node-red:/data
+    networks:
+      solar_network:
+        ipv4_address: 172.20.0.4
   mosquitto:
     container_name: mosquitto_container
     image: eclipse-mosquitto
@@ -34,3 +43,11 @@ services:
       - "1883:1883"
     volumes:
       - "./volumes/mosquitto:/mosquitto"
+    networks:
+      solar_network:
+        ipv4_address: 172.20.0.5
+networks:
+  solar_network:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24

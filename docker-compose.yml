@@ -5,7 +5,7 @@ services:
     container_name: mysql_container
     image: mysql:latest
     ports:
-     - 3360:3306
+     - "3360:3306"
     volumes:
      - ./volumes/mysql/data:/var/lib/mysql
      - ./volumes/mysql/init:/docker-entrypoint-initdb.d/:ro
@@ -15,7 +15,7 @@ services:
     container_name: grafana_container
     image: grafana/grafana:6.5.0
     ports:
-      - 3030:3000
+      - "3030:3000"
     user: '1000:1000'
     volumes:
       - ./volumes/grafana:/var/lib/grafana
@@ -27,3 +27,10 @@ services:
       - "1880:1880"
     volumes:
       - ./volumes/node-red:/data
+  mosquitto:
+    container_name: mosquitto_container
+    image: eclipse-mosquitto
+    ports:
+      - "1883:1883"
+    volumes:
+      - "./volumes/mosquitto:/mosquitto"
